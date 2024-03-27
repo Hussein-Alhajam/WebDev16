@@ -27,8 +27,7 @@ public class Customer {
 	public Customer() {}
 	
 	// parameterized constructor
-	public Customer(Long id, String name, String phoneNumber, String email) {
-		this.id = id;
+	public Customer(String name, String phoneNumber, String email) {
 		this.name = name;
 		this.phoneNumber = phoneNumber;
 		this.email = email;
