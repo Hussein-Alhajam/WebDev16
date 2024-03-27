@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Customers</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <h1>Customers</h1>
+    
+    <nav>
+        <a th:href="@{/}" class="nav-link">Home</a>
+        <a th:href="@{/rooms}" class="nav-link">Rooms</a>
+        <a th:href="@{/bookings}" class="nav-link">Bookings</a>
+        <a th:href="@{/services}" class="nav-link">Services</a>
+    </nav>
+    
+    <!-- Form for adding a new customer -->
+    <form th:action="@{/customers/add}" method="post">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" class="input-field" required>
+        
+		<label for="phoneNumber">Phone Number:</label>
+		       <input type="tel" id="phoneNumber" name="phoneNumber" class="input-field" required>
+		
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" class="input-field" required>
+        
+        <button type="submit" class="submit-button">Add Customer</button>
+    </form>
+    
+    <!-- Customer listing -->
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+				<th>Phone Number</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="customer : ${customers}">
+                <td th:text="${customer.name}"></td>
+				<td th:text="${customer.phoneNumber}"></td>
+                <td th:text="${customer.email}"></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
