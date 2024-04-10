@@ -18,7 +18,7 @@ public class RoomController {
     @GetMapping("/rooms")
     public String getAllRooms(Model model) {
         model.addAttribute("rooms", roomService.getAllRooms());
-        return "rooms"; // Assuming Thymeleaf template name is roomList.html
+        return "rooms";
     }
 
     @PostMapping("/rooms/add")
@@ -26,5 +26,4 @@ public class RoomController {
         roomService.addRoom(room);
         return "redirect:/rooms";
     }
-    // Other CRUD operations for Room entity can be added here
 }
