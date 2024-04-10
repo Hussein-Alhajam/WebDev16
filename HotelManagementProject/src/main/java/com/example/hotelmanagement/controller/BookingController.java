@@ -28,5 +28,5 @@ public class BookingController {
         return "redirect:/bookings";
    }
     
-    // Other CRUD operations for Booking entity can be added here
+    // Other CRUD operations for Booking entity can be added
 }
