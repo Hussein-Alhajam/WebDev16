@@ -22,11 +22,11 @@ public class BookingController {
         return "bookings";
     }
 
-   // @PostMapping("/bookings/add")
-    //public String addBooking(Booking booking) {
-     //   bookingService.addBooking(booking);
-      //  return "redirect:/bookings";
-    
+   @PostMapping("/bookings/add")
+    public String addBooking(Booking booking) {
+        bookingService.addBooking(booking);
+        return "redirect:/bookings";
+   }
     
     // Other CRUD operations for Booking entity can be added here
 }
