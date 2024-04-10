@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Services</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <h1>Services</h1>
+    
+    <nav>
+        <a th:href="@{/}" class="nav-link">Home</a>
+		<a th:href="@{/customers}" class="nav-link">Customers</a>
+		<a th:href="@{/rooms}" class="nav-link">Rooms</a>
+		<a th:href="@{/bookings}" class="nav-link">Bookings</a>
+		<a th:href="@{/services}" class="nav-link">Services</a>
+    </nav>
+    
+    <!-- Form for adding a new service -->
+    <form th:action="@{/services/add}" method="post">
+        <label for="name">Service Name:</label>
+        <input type="text" id="name" name="name" class="input-field" required>
+        
+        <label for="description">Description:</label>
+        <textarea id="description" name="description" class="input-field" required></textarea>
+        
+        <label for="price">Price:</label>
+        <input type="number" step="0.01" id="price" name="price" class="input-field" required>
+        
+        <button type="submit" class="submit-button">Add Service</button>
+    </form>
+    
+    <!-- Service listing -->
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Service Name</th>
+                <th>Description</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="service : ${services}">
+                <td th:text="${service.name}">Service Name</td>
+                <td th:text="${service.description}">Service Description</td>
+                <td th:text="${service.price}">100</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
