@@ -18,12 +18,14 @@
     <!-- Form for adding a new booking -->
     <form th:action="@{/bookings/add}" method="post">
         <label for="customer">Customer:</label>
-        <select id="customer" name="customer" class="input-field" required th:each="customer : ${customers}" th:value="${customer.id}" th:text="${customer.name}">
-        </select>
-        
+        <select id="customer" name="customer" class="input-field" required>
+    	<option th:each="customer : ${customers}" th:value="${customer.id}" th:text="${customer.name}"></option>
+		</select>
+		
         <label for="room">Room:</label>
-        <select id="room" name="room" class="input-field" required th:each="room : ${rooms}" th:value="${room.id}" th:text="${room.number}">
-        </select>
+        <select id="room" name="room" class="input-field" required>
+    	<option th:each="room : ${rooms}" th:value="${room.id}" th:text="${room.roomNumber}"></option>
+		</select>
 		
 		<label for="startDate">Start Date:</label>
 		<input type="date" id="startDate" name="startDate" class="input-field" required>
@@ -67,3 +69,4 @@
     </table>
 </body>
 </html>
+
