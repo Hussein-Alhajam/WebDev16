@@ -1,5 +1,10 @@
+package com.example.hotelmanagement.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.example.hotelmanagement.model.Booking;
+import com.example.hotelmanagement.repository.BookingRepository;
+
 import java.util.List;
 
 @Service
