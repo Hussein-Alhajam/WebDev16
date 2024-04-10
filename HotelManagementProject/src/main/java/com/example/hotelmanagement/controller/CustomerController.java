@@ -18,7 +18,7 @@ public class CustomerController {
     @GetMapping("/customers")
     public String getAllCustomers(Model model) {
         model.addAttribute("customers", customerService.getAllCustomers());
-        return "customers"; // Assuming Thymeleaf template name is customerList.html
+        return "customers";
     }
 
     @PostMapping("/customers/add")
@@ -26,5 +26,4 @@ public class CustomerController {
         customerService.addCustomer(customer);
         return "redirect:/customers";
     }
-    // Other CRUD operations for Customer entity can be added here
 }
