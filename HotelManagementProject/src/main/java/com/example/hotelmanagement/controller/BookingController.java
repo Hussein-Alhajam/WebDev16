@@ -22,7 +22,7 @@ public class BookingController {
         return "bookings";
     }
 
-   @PostMapping("/bookings/add")
+    @PostMapping("/bookings/add")
     public String addBooking(Booking booking) {
         bookingService.addBooking(booking);
         return "redirect:/bookings";
