@@ -18,14 +18,13 @@ public class ProvidedServiceController {
     @GetMapping("/services")
     public String getAllServices(Model model) {
         model.addAttribute("services", providedServiceService.getAllServices());
-        return "service"; // Assuming Thymeleaf template name is serviceList.html
+        return "service";
     }
-
 
     @PostMapping("/services/add")
     public String addService(ProvidedService service) {
         providedServiceService.addService(service);
         return "redirect:/services";
     }
-    // Other CRUD operations for ProvidedService entity can be added here
 }
+
