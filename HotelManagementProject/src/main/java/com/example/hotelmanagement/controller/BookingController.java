@@ -16,7 +16,7 @@ public class BookingController {
     @GetMapping("/bookings")
     public String getAllBookings(Model model) {
         model.addAttribute("bookings", bookingService.getAllBookings());
-        return "bookingList"; // Assuming Thymeleaf template name is bookingList.html
+        return "bookings"; // Assuming Thymeleaf template name is bookingList.html
     }
 
     // Other CRUD operations for Booking entity can be added here

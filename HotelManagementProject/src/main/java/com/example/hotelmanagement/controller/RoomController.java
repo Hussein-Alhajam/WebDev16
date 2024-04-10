@@ -16,7 +16,7 @@ public class RoomController {
     @GetMapping("/rooms")
     public String getAllRooms(Model model) {
         model.addAttribute("rooms", roomService.getAllRooms());
-        return "roomList"; // Assuming Thymeleaf template name is roomList.html
+        return "rooms"; // Assuming Thymeleaf template name is roomList.html
     }
 
     // Other CRUD operations for Room entity can be added here

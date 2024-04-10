@@ -16,7 +16,7 @@ public class CustomerController {
     @GetMapping("/customers")
     public String getAllCustomers(Model model) {
         model.addAttribute("customers", customerService.getAllCustomers());
-        return "customerList"; // Assuming Thymeleaf template name is customerList.html
+        return "customers"; // Assuming Thymeleaf template name is customerList.html
     }
 
     // Other CRUD operations for Customer entity can be added here
