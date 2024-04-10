@@ -9,9 +9,10 @@
     
     <nav>
         <a th:href="@{/}" class="nav-link">Home</a>
-        <a th:href="@{/customers}" class="nav-link">Customers</a>
-        <a th:href="@{/rooms}" class="nav-link">Rooms</a>
-        <a th:href="@{/services}" class="nav-link">Services</a>
+		<a th:href="@{/customers}" class="nav-link">Customers</a>
+		<a th:href="@{/rooms}" class="nav-link">Rooms</a>
+		<a th:href="@{/bookings}" class="nav-link">Bookings</a>
+		<a th:href="@{/services}" class="nav-link">Services</a>
     </nav>
     
     <!-- Form for adding a new booking -->
@@ -57,8 +58,8 @@
         </thead>
         <tbody>
             <tr th:each="booking : ${bookings}">
-                <td th:text="${booking.customer.name}"></td>
-                <td th:text="${booking.room.number}"></td>
+                <td th:text="${booking.customer?.name}"></td>
+                <td th:text="${booking.room?.number}"></td>
 				<td th:text="${booking.startDate}"></td>
 				<td th:text="${booking.endDate}"></td>
 			</tr>

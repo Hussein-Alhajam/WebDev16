@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Hotel Management System</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <h1>Welcome to the Hotel Management System</h1>
+    
+    <nav>
+        <a th:href="@{/customers}" class="nav-link">Customers</a>
+        <a th:href="@{/rooms}" class="nav-link">Rooms</a>
+        <a th:href="@{/bookings}" class="nav-link">Bookings</a>
+        <a th:href="@{/services}" class="nav-link">Services</a>
+    </nav>
+    
+    <div class="introduction">
+        <p>This is the homepage for the Hotel Management System. From here, you can navigate to different sections to manage customers, rooms, bookings, and services.</p>
+    </div>
+</body>
+</html>

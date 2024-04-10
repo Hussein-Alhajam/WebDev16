@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+
 import com.example.hotelmanagement.model.Customer;
 import com.example.hotelmanagement.service.CustomerService;
 
@@ -19,5 +21,10 @@ public class CustomerController {
         return "customers"; // Assuming Thymeleaf template name is customerList.html
     }
 
+    @PostMapping("/customers/add")
+    public String addCustomer(Customer customer) {
+        customerService.addCustomer(customer);
+        return "redirect:/customers";
+    }
     // Other CRUD operations for Customer entity can be added here
 }

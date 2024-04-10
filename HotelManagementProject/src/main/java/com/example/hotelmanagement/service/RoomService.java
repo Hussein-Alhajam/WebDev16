@@ -1,31 +1,32 @@
 package com.example.hotelmanagement.service;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import com.example.hotelmanagement.model.Room;
 import com.example.hotelmanagement.repository.RoomRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 public class RoomService {
-    
+
+    private final RoomRepository roomRepository;
+
     @Autowired
-    private RoomRepository roomRepository;
+    public RoomService(RoomRepository roomRepository) {
+        this.roomRepository = roomRepository;
+    }
 
     public List<Room> getAllRooms() {
         return roomRepository.findAll();
     }
 
-    public Room getRoomById(Long id) {
-        return roomRepository.findById(id).orElse(null);
-    }
-
-    public Room createOrUpdateRoom(Room room) {
+    // Method to add a new room
+    public Room addRoom(Room room) {
+        // Any business logic before saving the room
         return roomRepository.save(room);
     }
 
-    public void deleteRoom(Long id) {
-        roomRepository.deleteById(id);
-    }
+
+    // Additional methods as required for business logic can be added here
 }
