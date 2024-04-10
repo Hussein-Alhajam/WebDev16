@@ -61,7 +61,7 @@
         <tbody>
             <tr th:each="booking : ${BOOKING}">
                 <td th:text="${booking.customer?.name}"></td>
-                <td th:text="${booking.room?.number}"></td>
+                <td th:text="${booking.room?.roomNumber}"></td>
 				<td th:text="${booking.startDate}"></td>
 				<td th:text="${booking.endDate}"></td>
 			</tr>
