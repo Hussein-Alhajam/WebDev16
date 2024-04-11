@@ -23,10 +23,11 @@ public class ProvidedServiceService {
 
     // Method to add a new service
     public ProvidedService addService(ProvidedService service) {
-        // Any business logic before saving the service
         return serviceRepository.save(service);
     }
 
-
-    // Additional methods as required for business logic can be added here
+    // Method to find services by IDs - add this method
+    public List<ProvidedService> findAllById(List<Long> ids) {
+        return serviceRepository.findAllById(ids);
+    }
 }
