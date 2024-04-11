@@ -15,17 +15,32 @@
 		<a th:href="@{/services}" class="nav-link">Services</a>
     </nav>
     
+    <!-- Display error message if present -->
+	<div th:if="${errorMessage}" class="alert alert-danger" role="alert">
+    	<p th:text="${errorMessage}"></p>
+	</div>
+    
     <!-- Form for adding a new booking -->
-    <form th:action="@{/bookings/add}" method="post">
-        <label for="customer">Customer:</label>
-        <select id="customer" name="customer" class="input-field" required>
-    	<option th:each="customer : ${customers}" th:value="${customer.id}" th:text="${customer.name}"></option>
+    <form th:action="@{/bookings/add}" method="post" id="bookingForm">
+		
+		<!-- Dropdown for selecting a customer -->
+		<label for="customer">Customer:</label>
+		<select id="customer" name="customer" class="input-field" required>
+		    <option th:each="customer : ${customers}" th:value="${customer.id}" th:text="${customer.name}"></option>
 		</select>
 		
-        <label for="room">Room:</label>
-        <select id="room" name="room" class="input-field" required>
-    	<option th:each="room : ${rooms}" th:value="${room.id}" th:text="${room.roomNumber}"></option>
+		<!-- Dropdown for selecting a room -->
+		<label for="room">Room:</label>
+		<select id="room" name="room" class="input-field" required>
+		    <option th:each="room : ${rooms}" th:value="${room.id}" th:text="${room.roomNumber} + ' - ' + ${room.type}"></option>
 		</select>
+		
+		<!-- Services checkboxes -->
+		<label for="services">Services:</label>
+		<div th:each="service : ${services}">
+		    <input type="checkbox" th:id="${'service' + service.id}" th:name="services" th:value="${service.id}">
+		    <label th:for="${'service' + service.id}" th:text="${service.name}">Service Name</label>
+		</div>
 		
 		<label for="startDate">Start Date:</label>
 		<input type="date" id="startDate" name="startDate" class="input-field" required>
@@ -35,6 +50,19 @@
 
         <button type="submit" class="submit-button">Add Booking</button>
     </form>
+	
+	    <!-- Script to ensure at least one service is selected -->
+    <script>
+    document.getElementById("bookingForm").onsubmit = function() {
+        // Check if any service checkbox is checked
+        const servicesChecked = document.querySelectorAll('input[name="services"]:checked').length;
+        if (servicesChecked === 0) {
+            alert("Please select at least one service.");
+            return false; // Prevent form submission
+        }
+        return true; // Allow form submission
+    };
+    </script>
 	
 	<!-- prevents end date from being before the start date -->
 	<script>
@@ -54,19 +82,25 @@
             <tr>
                 <th>Customer</th>
                 <th>Room</th>
+				<th>Services</th>
 				<th>Start Date</th>
 				<th>End Date</th>
             </tr>
         </thead>
-        <tbody>
-            <tr th:each="booking : ${bookings}">
-                <td th:text="${booking.customer?.name}"></td>
-                <td th:text="${booking.room?.number}"></td>
-				<td th:text="${booking.startDate}"></td>
-				<td th:text="${booking.endDate}"></td>
-			</tr>
-        </tbody>
+		<tbody>
+		    <tr th:each="booking : ${bookings}">
+		        <td th:text="${booking.customer?.name}"></td>
+		        <td th:text="${booking.room?.roomNumber}"></td>
+		        <td>
+		            <ul>
+		                <li th:each="service : ${booking.services}" th:text="${service?.name}">Service Name</li>
+		            </ul>
+		        </td>
+		        <td th:text="${booking.startDate}"></td>
+		        <td th:text="${booking.endDate}"></td>
+		    </tr>
+		</tbody>
+
     </table>
 </body>
 </html>
-

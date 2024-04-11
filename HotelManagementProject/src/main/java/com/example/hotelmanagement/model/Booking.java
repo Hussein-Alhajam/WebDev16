@@ -1,6 +1,7 @@
 package com.example.hotelmanagement.model;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.persistence.Entity;
@@ -8,6 +9,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 
@@ -34,9 +37,12 @@ public class Booking {
 	private LocalDate endDate;
 	
 	// There can be many services for each booking
-	@OneToMany(mappedBy = "booking")
-	private List<ProvidedService> services;
-	
+    @ManyToMany
+    @JoinTable(name = "booking_service",
+               joinColumns = @JoinColumn(name = "booking_id"),
+               inverseJoinColumns = @JoinColumn(name = "service_id"))
+    private List<ProvidedService> services = new ArrayList<>();
+    
 	// constructor
 	public Booking() {}
 
